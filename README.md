@@ -46,7 +46,7 @@ logging {
 7. Restart bind: `sudo systemctl restart bind9`
 8. Test if it works:
 	- Run on your local machine: `dig testing.log4jdnsreq.example.com`
-	- Check if you see the request coming in on your VPS in file `/var/log/named/query.log`
+	- Check if you see the request coming in on your VPS in the file: `/var/log/named/query.log`
 
 ---
 
