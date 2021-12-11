@@ -85,3 +85,7 @@ Thanks to [@NorthwaveSecurity](https://github.com/NorthwaveSecurity) for providi
 ## License
 
 Open-sourced software licensed under the MIT license.
+
+## Disclaimer
+
+This script has been written specifically for Windows environments. Do not try to use it with custom ports of PowerShell.
