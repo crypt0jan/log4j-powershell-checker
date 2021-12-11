@@ -10,7 +10,7 @@ _Extras_: added outgoing proxy support.
 
 ## Usage
 
-* Edit the $NameServer parameter inside the script on line 16
+* Edit the `$NameServer` parameter inside the script on line 16
 * Run it like this: `.\log4j_ps_checker.ps1 https://vulnerableserver:8443`
 
 ---
@@ -44,8 +44,11 @@ logging {
 };
 ```
 
-7. Restart bind: `sudo systemctl restart bind9`
-8. Test if it works:
+7. Create the log file from step 6 and give it the right permissions
+	- `$ sudo touch /var/log/named/query.log`
+	- `$ sudo chown bind:bind /var/log/named/query.log`
+8. Restart bind: `$ sudo systemctl restart bind9`
+9. Test if it works:
 	- Run on your local machine: `dig testing.log4jdnsreq.example.com`
 	- Check if you see the request coming in on your VPS in the file: `/var/log/named/query.log`
 
