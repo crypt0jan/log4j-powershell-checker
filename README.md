@@ -10,7 +10,8 @@ _Extras_: added outgoing proxy support.
 
 ## Usage
 
-Run it like this: `.\log4j_ps_checker.ps1 https://vulnerableserver:8443`
+* Edit the $NameServer parameter inside the script on line 16
+* Run it like this: `.\log4j_ps_checker.ps1 https://vulnerableserver:8443`
 
 ---
 
