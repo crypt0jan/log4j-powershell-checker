@@ -45,9 +45,9 @@ logging {
 ```
 
 7. Create the log file from step 6 and give it the right permissions
-	- `$ sudo touch /var/log/named/query.log`
-	- `$ sudo chown bind:bind /var/log/named/query.log`
-8. Restart bind: `$ sudo systemctl restart bind9`
+	- `$ sudo mkdir /var/log/named && sudo touch /var/log/named/query.log`
+	- `$ sudo chown bind:bind /var/log/named/query.log && sudo chmod 660 /var/log/named/query.log`
+8. Start bind: `$ sudo systemctl start bind9`
 9. Test if it works:
 	- Run on your local machine: `dig testing.log4jdnsreq.example.com`
 	- Check if you see the request coming in on your VPS in the file: `/var/log/named/query.log`
