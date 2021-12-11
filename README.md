@@ -71,7 +71,7 @@ You should see an error message indicating that a remote lookup was attempted bu
 
 ## Credits
 
-Thanks to [@NorthwaveSecurity](https://github.com/NorthwaveSecurity) for providing me with the Python implementation and to [christophetd](https://github.com/christophetd) for providing me with the PoC docker image.
+Thanks to [@NorthwaveSecurity](https://github.com/NorthwaveSecurity) for providing me with the Python implementation and to [@christophetd](https://github.com/christophetd) for providing me with the PoC docker image.
 
 * https://github.com/NorthwaveSecurity/log4jcheck
 * https://github.com/christophetd/log4shell-vulnerable-app
