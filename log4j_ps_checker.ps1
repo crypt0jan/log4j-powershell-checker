@@ -36,7 +36,7 @@ if (!$args[0]) {
     Write-Host ("Scanning target: {0}" -f $target)
 }
 
-# Trust all certificates because we are running this on internal VMware vCenter servers with self-signed certificates...
+# Override SSL verify to prevent vulnerability checks bouncing on invalid certificates. 
 add-type @"
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
