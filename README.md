@@ -62,7 +62,7 @@ Be sure to have Docker installed. Then:
 You should see an error message indicating that a remote lookup was attempted but failed:
 
 ```
-2021-12-11 19:40:12,224 http-nio-8080-exec-8 WARN Error looking up JNDI resource [ldap://check1.log4jdnsreq.example.com/test.class]. javax.naming.CommunicationException: check1.log4jdnsreq.datalekje.nl:389 [Root exception is java.net.UnknownHostException: check1.log4jdnsreq.example.com]
+2021-12-11 19:40:12,224 http-nio-8080-exec-8 WARN Error looking up JNDI resource [ldap://check1.log4jdnsreq.example.com/test.class]. javax.naming.CommunicationException: check1.log4jdnsreq.example.com:389 [Root exception is java.net.UnknownHostException: check1.log4jdnsreq.example.com]
 ```
 
 **Important**: for this test to work, you should change `User-Agent` to `X-Api-Version` on line 63 (`$JsonHeader`) as christophetd's software only works with that specific header.
