@@ -64,7 +64,7 @@ try {
     $uar = $_.Exception
 }
 
-Write-Host $uar
+#Write-Host $uar
 
 # Check 2 (Get Request)
 
