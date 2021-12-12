@@ -4,7 +4,10 @@
 
 Perform a scan of a single host (using Powershell) to see if it's vulnerable for the above-mentioned CVE.
 
-_Extras_: added outgoing proxy support.
+_Updates_ 
+
+* Added outgoing proxy support.
+* Added `log4j_ps_checker_vcenter.ps1` for VMware vCenter Server.
 
 ---
 
