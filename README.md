@@ -8,7 +8,7 @@ _Updates_
 
 * Added outgoing proxy support.
 * Added `log4j_ps_checker_vcenter.ps1` for VMware vCenter Server.
-
+	- For VMware vRealize and VMware NXS-T: add payload to username field!
 ---
 
 ## Usage
