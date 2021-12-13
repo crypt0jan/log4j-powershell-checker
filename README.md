@@ -56,6 +56,44 @@ logging {
 9. Test if it works:
 	- Run on your local machine: `dig testing.log4jdnsreq.example.com`
 	- Check if you see the request coming in on your VPS in the file: `/var/log/named/query.log`
+10. (optional) If you don't see any requests after a few minutes, you might have to create a zone.
+	- Create file `/etc/bind/db.example` and put the following in:
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     log4jdnsreq. root.example. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+@       IN      A       YOURARECORDIPCOMESHERE(log4jcheck)
+```
+
+To clarify, if you created A record `log4jcheck.example.com` in step1, the IP of `log4jcheck` goes on the last line and `log4jdnsreq` from step 3 goes in the SOA record. Then, `example` from `example.com` goes after `root.`. Example:
+
+```
+;
+; BIND data file for local loopback interface
+;
+$TTL    604800
+@       IN      SOA     log4jdnsreq. root.example. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      localhost.
+@       IN      A       12.34.56.78
+```
+
+And finally, restart bind9: `$ sudo systemctl restart bind9`
 
 ---
 
