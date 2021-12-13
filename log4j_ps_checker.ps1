@@ -79,7 +79,7 @@ try {
     $gr = $_.Exception
 }
 
-Write-Host $gr
+#Write-Host $gr
 
 # CLEAR PROXY
 if ($Proxy) {
