@@ -1,4 +1,4 @@
-# log4j PowerShell Checker
+# CHAPTER8 - log4j PowerShell Checker
 
 **[CVE-2021-44228](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2021-44228)**
 
